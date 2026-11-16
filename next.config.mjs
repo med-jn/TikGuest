@@ -7,6 +7,9 @@ const nextConfig = {
   async rewrites() {
     return {
       beforeFiles: [
+        // Invite links shared from the Android app: https://HOST/s/CODE -> static share page.
+        // The URL stays /s/CODE, and share.html reads the code from location.pathname.
+        { source: "/s/:path*", destination: "/share.html" },
         { source: "/", destination: "/ar" },
         { source: "/regles", destination: "/ar/regles" },
         { source: "/conditions", destination: "/ar/conditions" },
@@ -34,6 +37,14 @@ const nextConfig = {
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "X-Frame-Options", value: "DENY" },
+        ],
+      },
+      // Android App Links verification file (must be served directly, no redirect)
+      {
+        source: "/.well-known/assetlinks.json",
+        headers: [
+          { key: "Content-Type", value: "application/json" },
+          { key: "Access-Control-Allow-Origin", value: "*" },
         ],
       },
     ];
