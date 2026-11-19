@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getDict } from "@/lib/dict";
 import { pagePath, site, siteUrl, type Lang } from "@/lib/site";
+import PlayBadge from "./PlayBadge";
 import Rich from "./Rich";
 import Shell from "./Shell";
 
@@ -13,30 +14,6 @@ const ICONS = [
   "M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3zM4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6", // memory
   "M5 21V4M5 4h11l-2 4 2 4H5", // report
 ];
-
-function PlayButton({ lang, big }: { lang: Lang; big?: boolean }) {
-  const d = getDict(lang);
-  const cls = `btn btn-primary${big ? " btn-lg" : ""}`;
-  const icon = (
-    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" className="fill">
-      <path d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5z" />
-    </svg>
-  );
-  if (site.playUrl) {
-    return (
-      <a href={site.playUrl} className={cls} rel="noopener">
-        {icon}
-        {d.home.ctaPlay}
-      </a>
-    );
-  }
-  return (
-    <span className={`${cls} btn-soon`} role="note">
-      {icon}
-      {d.home.ctaSoon}
-    </span>
-  );
-}
 
 export default function Home({ lang }: { lang: Lang }) {
   const d = getDict(lang);
@@ -69,7 +46,7 @@ export default function Home({ lang }: { lang: Lang }) {
             </h1>
             <p className="lead">{h.sub}</p>
             <div className="cta-row">
-              <PlayButton lang={lang} big />
+              <PlayBadge lang={lang} big />
               <a href="#how" className="btn btn-ghost btn-lg">{h.ctaHow}</a>
             </div>
             <p className="tagline" dir="ltr">{site.tagline}</p>
@@ -175,7 +152,7 @@ export default function Home({ lang }: { lang: Lang }) {
           <div className="final card">
             <h2>{h.finalTitle}</h2>
             <p className="muted">{h.finalSub}</p>
-            <PlayButton lang={lang} big />
+            <PlayBadge lang={lang} big />
           </div>
 
           <h2 className="h2 legal-h">{h.legalTitle}</h2>

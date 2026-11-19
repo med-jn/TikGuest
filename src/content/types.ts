@@ -42,6 +42,8 @@ export type Dict = {
     sub: string;
     ctaPlay: string;
     ctaSoon: string;
+    playKicker: string;
+    soonKicker: string;
     ctaHow: string;
     micAlt: string;
     stepsTitle: string;

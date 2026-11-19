@@ -34,6 +34,8 @@ const en: Dict = {
     sub: "Create a persona with the voice and dialect you choose, give it your knowledge and your rules, then let it chat with you as a guest in your TikTok LIVE streams. It answers only from what you added, and stays quiet when it isn’t being spoken to.",
     ctaPlay: "Get it on Google Play",
     ctaSoon: "Coming soon on Google Play",
+    playKicker: "Get it on",
+    soonKicker: "Coming soon on",
     ctaHow: "How does it work?",
     micAlt: "TikGuest logo: a microphone",
     stepsTitle: "Three steps to start",
@@ -86,6 +88,7 @@ const en: Dict = {
       "Screenshots are taken only when needed, and the system asks for your screen-sharing permission every time.",
       "Delete your account and all your data permanently with one button inside the app.",
       "No ads, and no tracking or analytics libraries in the app.",
+      "If you connect Google Drive, TikGuest only sees the files it created itself (drive.file), and you can revoke access at any time.",
     ],
     trustNote:
       "To be fully transparent: while running, the audio and any necessary screenshots are sent in real time to Gemini (Google) using your own key, because Gemini is what understands and replies. Full details in the [[privacy]].",
@@ -368,125 +371,90 @@ const en: Dict = {
     },
     privacy: {
       metaTitle: "Privacy policy | TikGuest",
-      metaDesc:
-        "TikGuest’s privacy policy: the data we collect, the permissions we request and why, who we share it with, retention, your rights and account deletion.",
+      metaDesc: "TikGuest’s privacy policy: the data we collect, Google Drive and sharing features, the permissions we request and why, who we share it with, retention, your rights and account deletion.",
       h1: "Privacy policy",
-      intro:
-        "Here we explain plainly what TikGuest does with your data and with other people’s data that passes through it. We keep only what is needed and we don’t sell your data. This policy applies to the TikGuest app (package {pkg}) and to this website.",
+      intro: "Here we explain plainly what TikGuest does with your data and with other people’s data that passes through it. We keep only what is needed and we don’t sell your data. This policy applies to the TikGuest app (package {pkg}) and to this website, and covers the knowledge library, Google Drive storage and persona sharing features.",
       sections: [
         {
           id: "who",
           title: "1. Who we are",
-          p: [
-            "Data controller: {dev}. Contact for any privacy matter: {email}.",
-            "TikGuest is independent from TikTok, ByteDance, Google and ElevenLabs.",
-          ],
+          p: ["Data controller: {dev}. Contact for any privacy matter: {email}.", "TikGuest is independent from TikTok, ByteDance, Google and ElevenLabs."],
         },
         {
           id: "collect",
           title: "2. Data we collect and store",
-          ul: [
-            "**Account:** your e-mail and ID from Google sign-in (through Supabase Auth).",
-            "**What you create:** the personas (name, dialect, description, voice settings), rules and knowledge you add. They are tied to your account and not visible to other users.",
-            "**API keys (Gemini and ElevenLabs):** stored encrypted on your device (using a key protected by the Android Keystore) and encrypted server-side in your account, so they follow you across devices. We use them only to run the guest on your behalf.",
-            "**People memory (optional, off by default):** if you turn it on, we store names of people who appear in your live and short notes about them, plus questions the guest couldn’t answer. This is third-party data, so keep only what you are allowed to.",
-            "**Reports:** if you tap “Report”, we store the text of the guest’s reply (up to 1,500 characters) and the reason, never anyone’s voice.",
-            "**Technical data:** like any online service, our hosting and authentication providers may log standard technical data (such as IP address and device type) for operation and security.",
-          ],
+          ul: ["**Account:** your e-mail and ID from Google sign-in (through Supabase Auth).", "**What you create:** personas (name, dialect, description, voice settings), rules and notes. They are tied to your account and visible only to you, unless you share a persona (see section 6).", "**Knowledge library:** when you add a link, a website, a YouTube video, a document, an image or an audio file, we store in your account its title, address, the text extracted from it (split into parts), a short summary and an outline. A temporary copy of an uploaded file stays on your device only until it has been read.", "**API keys (Gemini and ElevenLabs):** stored encrypted on your device (using a key protected by the Android Keystore) and encrypted server-side in your account, so they follow you across devices. We use them only to run the guest on your behalf.", "**People memory (optional, off by default):** if you turn it on, we store names of people who appear in your live and short notes about them, plus questions the guest couldn’t answer. This is third-party data, so keep only what you are allowed to.", "**Sharing data:** invitation codes you create, the type of each invitation (collaboration or use only), and the list of members who joined a persona (their account name and role).", "**Reports:** if you tap “Report”, we store the text of the guest’s reply (up to 1,500 characters) and the reason, never anyone’s voice.", "**Technical data:** like any online service, our hosting and authentication providers may log standard technical data (such as IP address and device type) for operation and security."],
+        },
+        {
+          id: "drive",
+          title: "3. Google Drive",
+          p: ["If you choose to connect Google Drive, TikGuest stores the audio files and images you add to your library in a folder named “TikGuest” in your own Drive, so they don’t take space on our servers.", "TikGuest’s use and transfer to any other app of information received from Google APIs adheres to the Google API Services User Data Policy, including its Limited Use requirements."],
+          ul: ["**Permission requested:** only the “drive.file” scope, which lets the app see and manage only the files it created itself. TikGuest cannot read, list or change any other file in your Drive.", "**What we keep:** only the identifier of each file TikGuest created. The Google access token stays on your device (obtained through Google Play services) and is never sent to our servers.", "**How we use it:** only to upload, play and delete those files for you. We don’t use Drive data for advertising, we don’t sell it, we don’t transfer it to others except as described in section 6, and no person reads it.", "**Shared personas:** while a persona is shared, the files attached to it are made readable by “anyone with the link” so that members can play them. Stopping the invitation removes that public access. Don’t add private files to a persona you intend to share.", "**Revoking and deleting:** you can revoke TikGuest’s access at any time at myaccount.google.com/permissions. Deleting your TikGuest account also deletes the “TikGuest” folder and its files from your Drive."],
         },
         {
           id: "not",
-          title: "3. What we don’t store",
-          ul: [
-            "We don’t store what live participants say, nor its transcript or any recording of it.",
-            "We don’t store screenshots.",
-            "Conversation memory stays in the device’s memory during the session only, and disappears afterwards.",
-            "We don’t use your data for advertising, we don’t sell it, and the app contains no tracking or analytics libraries.",
-          ],
+          title: "4. What we don’t store",
+          ul: ["We don’t store what live participants say, nor its transcript or any recording of it.", "We don’t store screenshots.", "Conversation memory stays in the device’s memory during the session only, and disappears afterwards.", "We don’t use your data for advertising, we don’t sell it, and the app contains no tracking or analytics libraries."],
         },
         {
           id: "permissions",
-          title: "4. Device permissions and why",
-          ul: [
-            "**Microphone (RECORD_AUDIO):** required by Android to capture the device’s internal audio (what other apps play, including the live’s sound). The app excludes its own sound from the capture.",
-            "**Screen sharing (MediaProjection):** to capture internal audio and, only when needed, take a screenshot, for example to check your status in the live or when the guest asks to see the screen. The system asks for your consent every session.",
-            "**Display over other apps (SYSTEM_ALERT_WINDOW):** to show the floating control panel.",
-            "**Foreground service and notifications (FOREGROUND_SERVICE, POST_NOTIFICATIONS):** to keep the guest running in the background with a visible notification.",
-            "**WAKE_LOCK and ignoring battery optimization:** to stop the system from killing the guest during a long live. The latter is optional.",
-            "**Internet:** to reach the services listed below.",
-            "**The app does not use accessibility services** and does not read the text of other apps.",
-          ],
+          title: "5. Device permissions and why",
+          ul: ["**Microphone (RECORD_AUDIO):** required by Android to capture the device’s internal audio (what other apps play, including the live’s sound). The app excludes its own sound from the capture.", "**Screen sharing (MediaProjection):** to capture internal audio and, only when needed, take a screenshot, for example when the guest asks to see the screen. The system asks for your consent every session.", "**Display over other apps (SYSTEM_ALERT_WINDOW):** to show the floating control panel.", "**Foreground service and notifications (FOREGROUND_SERVICE, POST_NOTIFICATIONS):** to keep the guest running in the background with a visible notification.", "**WAKE_LOCK and ignoring battery optimization:** to stop the system from killing the guest during a long live. The latter is optional.", "**Files you pick:** documents, images and audio are read only when you select them in the app.", "**Internet:** to reach the services listed below.", "**The app does not use accessibility services** and does not read the text of other apps."],
         },
         {
           id: "sharing",
-          title: "5. Who we share it with",
-          ul: [
-            "**Google (Gemini API):** while running, the device’s internal audio (which may include participants’ voices in the live) and, only when needed, screenshots are streamed in real time to Gemini using your own key. Google processes them under its terms and policies. On free tiers Google may use content to improve its products and humans may review it; use a paid key for greater privacy. In the EEA, Switzerland and the UK, Google requires paid services.",
-            "**Google (sign-in):** to authenticate you with your Google account.",
-            "**ElevenLabs:** if you choose its voice, only the guest’s reply text is sent to it to be turned into speech.",
-            "**Supabase:** the database and authentication provider that hosts your account data.",
-            "We may disclose data if the law requires it or to protect rights and safety.",
-          ],
+          title: "6. Who we share it with",
+          ul: ["**Google (Gemini API):** while running, the device’s internal audio (which may include participants’ voices in the live) and, only when needed, screenshots are streamed in real time to Gemini using your own key. Documents, images, audio and videos you add to the library are also sent to Gemini, with your key, to be read and converted to text; large files go through Google’s temporary file service. Google processes them under its terms and policies. On free tiers Google may use content to improve its products and humans may review it; use a paid key for greater privacy. In the EEA, Switzerland and the UK, Google requires paid services.", "**Google (sign-in and Drive):** to authenticate you and, if you connect it, to store your files in your Drive.", "**Websites you add as sources:** when you add a link, your device fetches the page directly from that site (including Google Docs, Drive, GitHub, Dropbox and YouTube links), which can therefore see your IP address. We don’t send your personal data to these sites.", "**Your own library (optional):** if you connect an external database, search queries are sent to the address you entered, with the key you provided.", "**ElevenLabs:** if you choose its voice, only the guest’s reply text is sent to it to be turned into speech.", "**Supabase:** the database and authentication provider that hosts your account data.", "**People you invite:** members of a persona you share can see its rules, knowledge and files, and, with a collaboration invitation, edit them. They cannot see your API keys.", "We may disclose data if the law requires it or to protect rights and safety."],
           after: ["These third parties are independent and process data under their own policies. Processing may take place in countries other than yours."],
         },
         {
           id: "others",
-          title: "6. Your responsibility toward your live’s participants",
-          p: ["Because other participants’ voices are sent to Gemini while running, you are responsible for having the legal basis to do so, for informing them where the law requires, and for disclosing that the guest is an AI. See the [[regles]]."],
+          title: "7. Your responsibility toward others",
+          p: ["Because other participants’ voices are sent to Gemini while running, you are responsible for having the legal basis to do so, for informing them where the law requires, and for disclosing that the guest is an AI. You are also responsible for the content you add to the library or share with members, and for having the right to use it. See the [[regles]]."],
         },
         {
           id: "retention",
-          title: "7. Retention and deletion",
-          p: ["We keep your account data for as long as your account exists. You can permanently delete your account, all your data and your keys from the app: Settings → Account → “Delete my account and all my data”. If you can’t, write to us at {email}. Details on [[delete-account]]."],
+          title: "8. Retention and deletion",
+          p: ["We keep your account data for as long as your account exists. You can permanently delete your account, all your data, your keys and your TikGuest folder in Google Drive from the app: Settings → Account → “Delete my account and all my data”. If you can’t, write to us at {email}. Details on [[delete-account]]. You can also delete a single source, persona or invitation at any time."],
         },
         {
           id: "security",
-          title: "8. Security",
-          ul: [
-            "Encrypted connections (HTTPS/WSS).",
-            "API keys encrypted on the device and on the server.",
-            "Row-level security policies in the database that restrict each user to their own data.",
-          ],
+          title: "9. Security",
+          ul: ["Encrypted connections (HTTPS/WSS).", "API keys encrypted on the device and on the server.", "Row-level security policies in the database that restrict each user to their own data and to personas shared with them."],
           after: ["No system is perfectly secure, so we cannot guarantee absolute security."],
         },
         {
           id: "rights",
-          title: "9. Your rights",
+          title: "10. Your rights",
           p: ["Depending on your country (for example GDPR in Europe), you may have the right to access, correct, delete and port your data, to object to or restrict its processing, to withdraw consent at any time, and to complain to your data protection authority. To exercise a right, write to {email}; we will reply within a reasonable time."],
         },
         {
           id: "children",
-          title: "10. Children",
+          title: "11. Children",
           p: ["The app is not directed to anyone under 18 and we don’t knowingly collect their data. If we learn that an account belongs to a minor, we delete it."],
         },
         {
           id: "changes",
-          title: "11. Changes to this policy",
+          title: "12. Changes to this policy",
           p: ["We may update this policy and the date at the top; for material changes we will let you know in the app or on this website."],
         },
         {
           id: "contact",
-          title: "12. Contact",
+          title: "13. Contact",
           p: ["{dev} · {email}"],
         },
       ],
     },
     "delete-account": {
       metaTitle: "Delete account and data | TikGuest",
-      metaDesc:
-        "How to delete your TikGuest account and all your data: from inside the app in a few steps, or by e-mail request.",
+      metaDesc: "How to delete your TikGuest account and all your data, including your Google Drive folder: from inside the app in a few steps, or by e-mail request.",
       h1: "Delete your account and data",
-      intro:
-        "You have the right to delete your account and data at any time. This page applies to the TikGuest app (package {pkg}) developed by {dev}.",
+      intro: "You have the right to delete your account and data at any time. This page applies to the TikGuest app (package {pkg}) developed by {dev}.",
       sections: [
         {
           id: "in-app",
           title: "Method 1: inside the app (fastest)",
-          ul: [
-            "Open TikGuest and sign in.",
-            "Go to **Settings → Account**.",
-            "Tap **“Delete my account and all my data”** and confirm.",
-          ],
+          ul: ["Open TikGuest and sign in.", "Go to **Settings → Account**.", "Tap **“Delete my account and all my data”** and confirm."],
           after: ["Deletion happens immediately and you are signed out."],
         },
         {
@@ -497,18 +465,18 @@ const en: Dict = {
         {
           id: "what",
           title: "What is deleted",
-          ul: [
-            "Your account (e-mail and ID).",
-            "All your personas and what is attached to them: rules, knowledge, voice settings.",
-            "Notes about people and unanswered questions, if you had turned on memory.",
-            "Saved API keys (Gemini, ElevenLabs) from our system, and from your device when you delete from the app.",
-          ],
-          after: ["Copies may remain temporarily in our database provider’s backups before being permanently erased in the normal cycle."],
+          ul: ["Your account (e-mail and ID).", "All your personas and what is attached to them: rules, knowledge library (texts, summaries, links), voice settings, invitations and memberships.", "Notes about people and unanswered questions, if you had turned on memory.", "Saved API keys (Gemini, ElevenLabs) from our system, and from your device when you delete from the app.", "The “TikGuest” folder in your Google Drive with the audio files and images the app stored there, and the public links attached to them (when you delete from the app)."],
+          after: ["Copies may remain temporarily in our database provider’s backups before being permanently erased in the normal cycle. If you delete by e-mail, delete the “TikGuest” folder yourself in Google Drive, or we will explain how."],
+        },
+        {
+          id: "shared",
+          title: "If you shared personas",
+          p: ["Personas you own disappear for the members you invited. If you joined someone else’s persona, deleting your account only removes your membership and your own data; the owner’s persona is not affected."],
         },
         {
           id: "third",
           title: "What our deletion does not cover",
-          p: ["What is held by other parties is subject to their policies and your account with them: your Google account and Gemini key (Google AI Studio), and your ElevenLabs account. Delete or revoke your keys there too if you wish. The TikTok app and your TikTok account are outside our scope."],
+          p: ["What is held by other parties is subject to their policies and your account with them: your Google account and Gemini key (Google AI Studio), content already processed by Google, and your ElevenLabs account. Delete or revoke your keys there too, and TikGuest’s access at myaccount.google.com/permissions, if you wish. The TikTok app and your TikTok account are outside our scope."],
         },
         {
           id: "questions",

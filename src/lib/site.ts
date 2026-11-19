@@ -18,7 +18,7 @@ export const site = {
   developerName: clean(process.env.NEXT_PUBLIC_DEVELOPER_NAME) || "TikGuest",
   playUrl: clean(process.env.NEXT_PUBLIC_PLAY_URL),
   // Date of the last substantive change to the legal texts (ISO). Update it when you edit them.
-  updated: "2026-11-10",
+  updated: "2026-11-19",
 };
 
 export function siteUrl(): string {

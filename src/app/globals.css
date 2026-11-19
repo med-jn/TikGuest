@@ -195,3 +195,33 @@ details > summary::-webkit-details-marker { display: none; }
 .footer-links a { color: #c9cad2; text-decoration: none; font-size: 0.95rem; }
 .footer-links a:hover { color: var(--cyan); }
 .disclaimer { max-width: 70ch; }
+
+/* Store button (Google Play) in the TikGuest identity */
+.store-btn {
+  position: relative; display: inline-flex; align-items: center; gap: 14px; min-height: 58px;
+  padding: 9px 24px 9px 18px; border-radius: 16px; text-decoration: none; color: var(--text); overflow: hidden;
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(180deg, #17171d, #0b0b0f) padding-box,
+    linear-gradient(135deg, var(--cyan), #3a3a44 42%, #3a3a44 58%, var(--red)) border-box;
+  box-shadow: 0 10px 28px rgb(0 0 0 / .55), inset 0 1px 0 rgb(255 255 255 / .07);
+  transition: transform .18s, box-shadow .18s;
+}
+.store-lg { min-height: 64px; padding-inline: 20px 28px; }
+.store-mark { flex: none; filter: drop-shadow(0 2px 6px rgb(0 0 0 / .5)); }
+.store-text { display: flex; flex-direction: column; line-height: 1.1; text-align: start; }
+.store-kicker { font-size: .7rem; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+html[lang="ar"] .store-kicker { letter-spacing: 0; text-transform: none; font-size: .78rem; }
+.store-name { margin-top: 3px; font-size: 1.32rem; font-weight: 700; letter-spacing: -0.01em; }
+.store-btn::after {
+  content: ""; position: absolute; inset: 0; transform: translateX(-120%);
+  background: linear-gradient(100deg, transparent 30%, rgb(255 255 255 / .12) 50%, transparent 70%);
+  transition: transform .7s;
+}
+a.store-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgb(254 44 85 / .22), 0 0 0 4px rgb(37 244 238 / .10), inset 0 1px 0 rgb(255 255 255 / .1); }
+a.store-btn:hover::after { transform: translateX(120%); }
+a.store-btn:active { transform: translateY(-1px); }
+a.store-btn:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+.store-soon { cursor: default; }
+.store-soon .store-mark { opacity: .85; }
+@media (prefers-reduced-motion: reduce) { .store-btn, .store-btn::after { transition: none; } a.store-btn:hover { transform: none; } }
